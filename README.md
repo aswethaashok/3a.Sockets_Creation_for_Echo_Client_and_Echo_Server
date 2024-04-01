@@ -14,27 +14,49 @@ Sockets Links.
 ## PROGRAM
 ## CLIENT
  import socket
+ 
  HOST = '127.0.0.1'  
+ 
 PORT = 65432       
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+
  s.bind((HOST, PORT))
+ 
  s.listen()
+ 
  conn, addr = s.accept()
+ 
  with conn:
+ 
  print('Connected by', addr)
+ 
  while True:
+ 
  data = conn.recv(1024)
+ 
   if not data:
+  
  break
+ 
  conn.sendall(data) 
+ 
 ## SERVER
+
  import socket
- HOST = '127.0.0.1'  
-PORT = 65432        
+ 
+ HOST = '127.0.0.1' 
+
+PORT = 65432
+
  with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+ 
  s.connect((HOST, PORT))
+ 
  while True:
+ 
  message = input("Enter message to send to server: ")
+ 
 ## OUPUT
 ## CLIENT
 ![image](https://github.com/aswethaashok/3a.Sockets_Creation_for_Echo_Client_and_Echo_Server/assets/149987410/b046236e-91e9-430a-985c-8ca414f4a370)
